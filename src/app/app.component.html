@@ -1,4 +1,31 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<input type="text" name="elemento" id="elemento" [(ngModel)]="title">
+
+{{ title }}
+
+<div *ngIf="title === 'francisco'">
+  Este es Francisco
+</div>
+
+<div [ngSwitch]="title">
+  <p *ngSwitchCase="'francisco'">Este es Francisco</p>
+  <p *ngSwitchCase="'luis'">Este es Luis</p>
+  <p *ngSwitchCase="'gerardino'">Este es Gerardino</p>
+  <p *ngSwitchCase="'blas'">Este es Blas</p>
+  <p *ngSwitchDefault>No hay coincidencias</p>
+</div>
+
+<button (click)="addItem()">Agregar</button>
+
+<ul>
+  <li *ngIf="items.length === 0">Lista vacia</li>
+  <li *ngFor="let name of items; index as i">
+    {{ name }} {{ i }}
+    <button (click)="deleteItem(i)">Eliminar</button>
+  </li>
+</ul>
+
+<div *ngFor="let product of productos">
+  {{ product.titulo}}
+  <img [src]="product.imagen" [alt]="product.imagen">
+  {{ product.precio }}
+</div>
